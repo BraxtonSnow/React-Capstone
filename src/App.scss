@@ -1,0 +1,271 @@
+body {
+  height: 70vh;
+  width: 99vw;
+  margin: 0px;
+  .app {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    // text-align: center;
+    width: 100%;
+    height: 100%;
+
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 95px;
+      width: 100%;
+      border: 5px solid white;
+      background-color: transparent;
+
+      h1 {
+        margin: 0px;
+        font-style: italic;
+        text-shadow: 2.5px 1.3px black;
+        color: rgb(50, 179, 50);
+      }
+
+      .my-logo-content {
+        z-index: -1;
+        position: absolute;
+        height: 130px;
+        width: 300px;
+      }
+    }
+    .navbar-container {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      // gap: 25%;
+      height: 80px;
+      background-color: white;
+
+      button {
+        height: 30px;
+        width: 80px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(16, 143, 143, 0.127);
+        font-size: 15px;
+        font-weight: 550;
+        cursor: pointer;
+
+        &:hover {
+          background-color: aquamarine;
+        }
+      }
+    }
+    .page-container {
+      display: flex;
+      justify-content: center;
+      height: 580px;
+      width: 100%;
+
+      .img {
+        z-index: -1;
+        position: absolute;
+        width: 90%;
+        height: 70%;
+        margin-top: 50px;
+      }
+
+      h3 {
+        // border: 1px solid green;
+        font-size: 24px;
+        width: max-content;
+        margin: 0px;
+      }
+
+      .contact-title-container {
+        display: flex;
+        justify-content: center;
+        width: max-content;
+        // margin-left: 65px;
+      }
+
+      .product-page-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 50%;
+
+        img {
+          width: 200px;
+          height: 200px;
+        }
+
+        .card-quantity-container {
+          display: flex;
+          font-size: 18px;
+          button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            margin: 2px 5px;
+          }
+        }
+      }
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // text-align: center;
+        width: 80%;
+
+        .form-input-content {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          margin-top: 20px;
+
+          .input-search-box {
+            width: 80%;
+            height: 30px;
+            // margin-top: 20px;
+            margin-right: 10px;
+            border-radius: 5px;
+          }
+          .input-submit-button {
+            width: 100px;
+            height: 33px;
+          }
+        }
+
+        .main-product-card-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          margin-top: 40px;
+          width: 100%;
+          height: 65%;
+          border: 1px solid green;
+          gap: 17px;
+          padding: 1%;
+          overflow-y: scroll;
+
+          .product-card-button-container {
+            padding: 0px;
+            border-radius: 12px;
+            border-color: transparent;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+            .product-card-container {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              align-items: center;
+              border: 5px solid black;
+              border-radius: 10px;
+              width: 250px;
+              height: 290px;
+              background-color: rgb(25, 180, 25);
+
+              .card-title {
+                font-size: 13px;
+                font-weight: 600;
+                text-align: center;
+                padding: 1%;
+              }
+
+              .card-description {
+                font-size: 13px;
+                width: 90%;
+                height: 30%;
+                border: 1px solid yellow;
+                background-color: cadetblue;
+                overflow: hidden;
+              }
+
+              .card-price {
+                margin: 0px;
+              }
+
+              .card-image {
+                width: 20%;
+                height: 20%;
+              }
+            }
+          }
+          button {
+            background-color: mediumturquoise;
+            margin: 2% 33%;
+            width: 90px;
+          }
+        }
+      }
+      .contact-component-container {
+        z-index: 2;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // border: 1px solid blue;
+        width: 60%;
+        margin-top: 8%;
+
+        .contact-modal-container {
+          background-color: rgb(14, 131, 135);
+          padding: 5% 4% 5% 2%;
+          color: black;
+          text-align: center;
+          border: 5px solid black;
+
+          h1 {
+            margin-top: 0px;
+            margin-bottom: 50px;
+            text-decoration: underline solid black;
+          }
+          .modal-content-container {
+            display: flex;
+            .label-name-container {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 21.5px;
+              padding-top: 1px;
+              height: 70%;
+              // width: 50%;
+              // border: 1px solid orange;
+
+              h3 {
+                font-size: 13px;
+                width: 90px;
+              }
+            }
+            .contact-inputs-container {
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+
+              .submit-input {
+                width: 60%;
+                margin-left: 20%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      background-color: cadetblue;
+
+      h5 {
+        margin: 0px 20px;
+      }
+      h3 {
+        margin-right: 20px;
+      }
+    }
+  }
+}
