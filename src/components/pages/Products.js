@@ -23,7 +23,6 @@ export default function ProductsPage(props) {
 
   function searchBar(e) {
     e.preventDefault();
-    // setSearchedItem(search);
     console.log(search);
     setProducts((preState) =>
       preState.filter((item) => {
@@ -34,22 +33,27 @@ export default function ProductsPage(props) {
     setSearch("");
     setSearchedItem("work");
     console.log(searchedItem);
-    // console.log(array);
     console.log(products);
   }
 
-  function cardSelectToCart(title, image, description, price, id) {
+  function cardSelectToCart(title, image, description, quantity, price, id) {
     console.log(id);
-    props.setCartArray((preState) => [
-      ...preState,
-      {
-        title: title,
-        image: image,
-        description: description,
-        price: price,
-        id: id,
-      },
-    ]);
+    if (props.number === 1) {
+      props.setNumber((preState) => preState + 1);
+      props.setCartArray((preState) => [
+        ...preState,
+        {
+          title: title,
+          image: image,
+          description: description,
+          quantity: quantity,
+          price: price,
+          id: id,
+        },
+      ]);
+    } else {
+      props.addNumber(id, quantity);
+    }
     console.log("worked well");
   }
 
@@ -74,6 +78,7 @@ export default function ProductsPage(props) {
             buttonName={"Add To Cart"}
             setProductId={props.setProductId}
             number={number}
+            setProduct={props.setProduct}
           />
         </div>
       </div>

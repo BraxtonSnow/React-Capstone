@@ -14,18 +14,33 @@ export default function App() {
   const [cartArray, setCartArray] = useState([]);
   const [productId, setProductId] = useState("");
   const [number, setNumber] = useState(1);
+  const [product, setProduct] = useState([]);
 
-  function addNumber() {
+  function addNumber(id, quantity) {
+    console.log(cartArray);
+    console.log(id);
     setNumber((preState) => preState + 1);
+    cartArray.forEach((item) => {
+      console.log(item);
+      if (item.id === id) {
+        // console.log(item);
+        item["quantity"] = quantity + 1;
+      }
+    });
+
+    // setNumber((preState) => preState + 1);
   }
 
-  function subtractNumber(id) {
+  function subtractNumber(id, quantity) {
+    console.log(cartArray);
+    console.log(id);
     if (number !== 1) {
       setNumber((preState) => preState - 1);
       cartArray.forEach((item) => {
         console.log(item);
         if (item.id === id) {
-          console.log(item);
+          // console.log(item);
+          item["quantity"] = quantity - 1;
         }
       });
     }
@@ -54,13 +69,25 @@ export default function App() {
                 cartArray={cartArray}
                 setCartArray={setCartArray}
                 setProductId={setProductId}
+                addNumber={addNumber}
+                number={number}
+                setNumber={setNumber}
+                setProduct={setProduct}
+                product={product}
               />
             )}
           />
           <Route
             exact
             path="/products/:slug"
-            render={() => <Product productId={productId} number={1} />}
+            render={() => (
+              <Product
+                productId={productId}
+                number={1}
+                display={"none"}
+                product={product}
+              />
+            )}
           />
 
           <Route
@@ -74,6 +101,8 @@ export default function App() {
                 setProductId={setProductId}
                 number={number}
                 subtractNumber={subtractNumber}
+                setProduct={setProduct}
+                product={product}
               />
             )}
           />
@@ -87,6 +116,8 @@ export default function App() {
                 addNumber={addNumber}
                 setNumber={setNumber}
                 number={number}
+                display={"flex"}
+                product={product}
               />
             )}
           />

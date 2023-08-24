@@ -2,16 +2,25 @@ import { useState, useEffect } from "react";
 import CardComp from "../CardComp";
 export default function CartPage(props) {
   const [cards, setCards] = useState([]);
+  // const [render,setRender] = useState("")
   useEffect(() => {
     for (let i = 0; i < props.cartArray.length; i++) {
       console.log("ran cart");
+
       setCards((preState) => [...preState, props.cartArray[i]]);
+      // cards.forEach((item) => {
+      //   console.log(item);
+      //   if (item.id === i + 1) {
+      //     // console.log(item);
+      //     item["quantity"] = 1;
+      //   }
+      // });
     }
   }, [props.cartArray]);
 
-  function deleteCard(title, image, description, price, id) {
+  function deleteCard(title, image, description, quantity, price, id) {
     console.log(props.number);
-    if (props.number === 1) {
+    if (quantity === 1) {
       setCards([]);
       props.setCartArray((preState) =>
         preState.filter((item) => {
@@ -19,7 +28,7 @@ export default function CartPage(props) {
         })
       );
     } else {
-      props.subtractNumber(id);
+      props.subtractNumber(id, quantity);
     }
   }
 
@@ -35,6 +44,7 @@ export default function CartPage(props) {
             buttonName={"Delete"}
             setProductId={props.setProductId}
             number={props.number}
+            setProduct={props.setProduct}
           />
         </div>
       </div>
