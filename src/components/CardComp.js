@@ -13,6 +13,7 @@ export default function CardComp(props) {
       description: product.description,
       quantity: product.quantity,
       price: product.price,
+      created: product.created,
       id: product.id,
     });
   }
@@ -45,6 +46,7 @@ export default function CardComp(props) {
               product.description,
               product.quantity,
               product.price,
+              product.created,
               product.id
             )
           }

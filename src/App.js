@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HomePage from "./components/pages/Home";
 import ProductsPage from "./components/pages/Products";
 import CartPage from "./components/pages/Cart";
@@ -15,6 +15,22 @@ export default function App() {
   const [productId, setProductId] = useState("");
   const [number, setNumber] = useState(1);
   const [product, setProduct] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setProducts([]);
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        data.forEach((item) => {
+          item["quantity"] = 1;
+          item["created"] = false;
+        });
+        setProducts(data);
+        // console.log(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   function addNumber(id, quantity) {
     console.log(cartArray);
@@ -23,8 +39,8 @@ export default function App() {
     cartArray.forEach((item) => {
       console.log(item);
       if (item.id === id) {
-        // console.log(item);
-        item["quantity"] = quantity + 1;
+        item["quantity"] = item.quantity + 1;
+        console.log("item", item);
       }
     });
 
@@ -34,13 +50,13 @@ export default function App() {
   function subtractNumber(id, quantity) {
     console.log(cartArray);
     console.log(id);
-    if (number !== 1) {
+    if (quantity !== 1) {
       setNumber((preState) => preState - 1);
       cartArray.forEach((item) => {
-        console.log(item);
+        // console.log(item);
         if (item.id === id) {
-          // console.log(item);
-          item["quantity"] = quantity - 1;
+          console.log(item);
+          item["quantity"] = item.quantity - 1;
         }
       });
     }
@@ -74,6 +90,8 @@ export default function App() {
                 setNumber={setNumber}
                 setProduct={setProduct}
                 product={product}
+                products={products}
+                setProducts={setProducts}
               />
             )}
           />

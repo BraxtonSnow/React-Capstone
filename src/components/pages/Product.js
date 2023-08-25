@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function Product(props) {
   const [product, setProduct] = useState([]);
+  const [num, setNum] = useState(1);
   console.log("props: ", props);
   useEffect(() => {
     console.log("i ran properely");
@@ -16,6 +17,7 @@ export default function Product(props) {
   }, [props.product.quantity, props.productId]);
 
   // console.log(product);
+  console.log(num);
 
   return (
     <div className="page-container">
@@ -31,12 +33,22 @@ export default function Product(props) {
         >
           {"Quantity:   "}
           <button
-            onClick={() => props.subtractNumber(product.id, product.quantity)}
+            onClick={() =>
+              props.subtractNumber(
+                product.id,
+                props.product.quantity,
+                setNum(1)
+              )
+            }
           >
             -
           </button>
-          <button>{product.quantity}</button>
-          <button onClick={() => props.addNumber(product.id, product.quantity)}>
+          <button>{props.product.quantity}</button>
+          <button
+            onClick={() =>
+              props.addNumber(product.id, product.quantity, setNum(1))
+            }
+          >
             +
           </button>
         </div>
